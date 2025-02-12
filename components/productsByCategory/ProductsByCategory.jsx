@@ -1,9 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { getProductsByCategory } from "@/services/products"
+import { getProducts } from "@/services/products"
 
 export const ProductsByCategory = async ({category}) => {
-    const productsByCat = await getProductsByCategory(category)
+    const productsByCat = await getProducts(null,category)
   return (
     <main>
     <h1 className="text-2xl text-center mb-4">Productos</h1>

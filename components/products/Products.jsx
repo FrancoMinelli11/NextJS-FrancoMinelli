@@ -3,8 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const Products =  async () => {
-    const API_URL =  'https://fakestoreapi.com/products'
-    const products = await getProducts(API_URL)
+    // const API_URL =  'https://fakestoreapi.com/products'
+    const products = await getProducts()
   return (
     <main>
         <h1 className="text-2xl text-center mb-4">Productos</h1>

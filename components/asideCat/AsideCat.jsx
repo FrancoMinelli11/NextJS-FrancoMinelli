@@ -9,7 +9,7 @@ export const AsideCat = async () => {
       <hr />
       {cats.map((cat) => {
       return (
-        <Link href={`/catalog/${cat}`} key={cat} className="text-xs first-letter:uppercase pt-2 hover:text-fuchsia-500">{cat}</Link>
+        <Link href={`/catalog/${cat.name}`} key={cat.name} className="text-xs first-letter:uppercase pt-2 hover:text-fuchsia-500">{cat.slug}</Link>
       )
     })}</div>
   )

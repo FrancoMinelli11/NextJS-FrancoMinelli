@@ -1,9 +1,8 @@
-import { getProduct } from "@/services/products"
+import { getProducts } from "@/services/products"
 import Image from "next/image"
 
 export const ProductDetail = async ({id}) => {
-    const API_URL = 'https://fakestoreapi.com/products'
-    const detail = await getProduct(API_URL, id)
+    const detail = await getProducts(id)
   return ( 
     <div>
         <h1 className="text-2xl text-center m-4">{detail.title}</h1>
