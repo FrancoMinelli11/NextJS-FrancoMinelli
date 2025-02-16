@@ -24,12 +24,12 @@ const StyledWrapper = styled.div`
 
   .loading svg polyline#back {
     fill: none;
-    stroke: #ff4d5033;
+    stroke: #fff;
   }
 
   .loading svg polyline#front {
     fill: none;
-    stroke: #ff4d4f;
+    stroke: #123f63;
     stroke-dasharray: 48, 144;
     stroke-dashoffset: 192;
     animation: dash_682 1.4s linear infinite;

@@ -1,5 +1,7 @@
 import { collection, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
 import { db } from '@/firebase/config'
+// import  productos  from '../assets/mock.json'
+
 export const getProducts = async (id = null, category) => {
     const productsCollection = collection(db, 'products')
     if (id){
@@ -7,7 +9,7 @@ export const getProducts = async (id = null, category) => {
         const snapshot = await getDoc(itemDoc)
         return snapshot.data()
     }
-    const filter = query(productsCollection,where('category', '==', category))
+    const filter = category ? query(productsCollection,where('category', '==', category)) : null
     const snapshot = await getDocs(category ? filter : productsCollection)
     const data = snapshot.docs.map(doc => 
         {
@@ -29,4 +31,6 @@ export const getAllCategories = async () => {
 // export const loadProducts = () => {
 //     const tuki = collection(db, 'products')
 //     productos.map(producto => addDoc(tuki, producto))
-// } Funcion para cargar los productos de mock.json en Firebase
+//     alert('Productos cargados')
+// } 
+//Funcion para cargar los productos de mock.json en Firebase
