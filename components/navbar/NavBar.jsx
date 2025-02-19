@@ -1,13 +1,15 @@
 import Link from "next/link"
+import { AuthLink } from "../authLink/AuthLink"
 
 export const NavBar = () => {
+  
   return (
-    <nav className="flex justify-between h-[7vh] bg-[#086788] items-center px-4">
+    <nav className="flex justify-between h-[7vh] bg-primary items-center px-4">
         <Link href="/" className="hover:text-[#132F63]">KayFs</Link>
         <div className="flex gap-4">
             <Link href="/catalog" className="hover:text-[#132F63]">Catálogo</Link>
             <Link href="/cart" className="hover:text-[#132F63]">Carrito</Link>
-            <Link href="/admin" className="hover:text-[#132F63]">Admin</Link>
+            <AuthLink/>
         </div>
     </nav>
   )

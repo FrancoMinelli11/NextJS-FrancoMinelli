@@ -5,6 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #086788;
+  --color-secondary: #132F63;
+  --color-tertiary: #92B6B1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,3 +22,49 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* CSS HEX
+--cerulean: #086788ff;
+--delft-blue: #132f63ff;
+--cambridge-blue: #92b6b1ff;
+--midnight-green: #115762ff;
+--jet: #31302eff; */
+
+/* CSS HSL
+--cerulean: hsla(195, 89%, 28%, 1);
+--delft-blue: hsla(219, 68%, 23%, 1);
+--cambridge-blue: hsla(172, 20%, 64%, 1);
+--midnight-green: hsla(188, 70%, 23%, 1);
+--jet: hsla(40, 3%, 19%, 1); */
+
+/* SCSS HEX
+$cerulean: #086788ff;
+$delft-blue: #132f63ff;
+$cambridge-blue: #92b6b1ff;
+$midnight-green: #115762ff;
+$jet: #31302eff; */
+
+/* SCSS HSL
+$cerulean: hsla(195, 89%, 28%, 1);
+$delft-blue: hsla(219, 68%, 23%, 1);
+$cambridge-blue: hsla(172, 20%, 64%, 1);
+$midnight-green: hsla(188, 70%, 23%, 1);
+$jet: hsla(40, 3%, 19%, 1); */
+
+/* SCSS RGB
+$cerulean: rgba(8, 103, 136, 1);
+$delft-blue: rgba(19, 47, 99, 1);
+$cambridge-blue: rgba(146, 182, 177, 1);
+$midnight-green: rgba(17, 87, 98, 1);
+$jet: rgba(49, 48, 46, 1); */
+
+/* SCSS Gradient
+$gradient-top: linear-gradient(0deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-right: linear-gradient(90deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-bottom: linear-gradient(180deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-left: linear-gradient(270deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-top-right: linear-gradient(45deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-bottom-right: linear-gradient(135deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-top-left: linear-gradient(225deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-bottom-left: linear-gradient(315deg, #086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff);
+$gradient-radial: radial-gradient(#086788ff, #132f63ff, #92b6b1ff, #115762ff, #31302eff); */

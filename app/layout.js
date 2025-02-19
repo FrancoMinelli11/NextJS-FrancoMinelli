@@ -1,6 +1,7 @@
 import { NavBar } from "@/components/navbar/NavBar";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { Footer } from "@/components/footer/Footer";
 
 export const metadata = {
   title: "KayFs",
@@ -10,10 +11,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <AuthProvider>
         <NavBar/>
+        <main className="flex flex-col grow">
         {children}
+        </main>
+        <Footer/>
         </AuthProvider>
       </body>
     </html>

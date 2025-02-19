@@ -1,13 +1,10 @@
-'use client'
-import { Button } from "@/components/button/Button";
-import { AuthContext } from "@/context/AuthContext";
-import { useContext } from "react";
+import { CreateProductForm } from "@/components/createProductForm/CreateProductForm";
+
 export default function Page() {
-    const {logged, handleLogin} = useContext(AuthContext)
     return (
-        <div>
-            <h1>Admin</h1>
-            <Button onClick={handleLogin} text={logged ? 'Logout' : 'Login'}/>
+        <div className="flex flex-col justify-center items-center w-full h-[86vh]">
+            <h1 className="text-2xl mb-2">Admin</h1>
+            <CreateProductForm/>
         </div>
     );
 }
