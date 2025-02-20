@@ -7,6 +7,9 @@ const nextConfig = {
             },
             {
                 hostname : 'fakestoreapi.com'
+            },
+            {
+                hostname : 'encrypted-tbn0.gstatic.com'
             }
         ]
     }

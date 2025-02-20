@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, doc, query, where } from 'firebase/firestore'
+import { collection, getDocs, getDoc, doc, query, where, addDoc, } from 'firebase/firestore'
 import { db } from '@/firebase/config'
 import Swal from 'sweetalert2'
 //import  productos  from '../assets/mock.json'
@@ -22,6 +22,7 @@ try {    const productsCollection = collection(db, 'products')
     return data
     } catch {
         return Swal.fire({
+            toast: true,
             icon: 'error',
             title: 'Oops...',
             text: 'Algo salió mal',
@@ -37,6 +38,7 @@ export const getAllCategories = async () => {
         return data
 }catch (error) {
     return Swal.fire({
+        toast: true,
         icon: 'error',
         title: 'Oops...',
         text: 'Algo salió mal',
@@ -50,3 +52,24 @@ export const getAllCategories = async () => {
     alert('Productos cargados')
 } */}
 //Funcion para cargar los productos de mock.json en Firebase
+
+export const LoadNewProduct = async (product) => {
+    try{
+        //product.id = documentId()
+        const productsCollection = collection(db,'products')
+        await addDoc(productsCollection, product)
+        Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Actualización terminada',
+            text: 'Producto creado con éxito'
+        })
+    }catch{
+        Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Algo salió mal'
+        })
+    }
+}
