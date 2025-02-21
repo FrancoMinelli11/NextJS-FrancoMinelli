@@ -1,7 +1,8 @@
-import { ShoppingCart } from "lucide-react";
+import { CartDetails } from "@/components/cartDetails/CartDetails";
+
 
 export default function page  () {
   return (
-    <div><ShoppingCart/></div>
+    <CartDetails/>
   )
 }
