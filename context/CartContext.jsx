@@ -14,7 +14,8 @@ export const CartProvider = ({children}) => {
                 toast: true,
                 icon: 'error',
                 title: 'Oops...',
-                text: 'No hay stock suficiente'
+                text: 'No hay stock suficiente',
+                allowOutsideClick: false
             })
             return
         }

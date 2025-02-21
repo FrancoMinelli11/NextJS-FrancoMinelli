@@ -5,9 +5,10 @@ import { Button } from "../button/Button"
 import { useContext, useEffect, useState } from "react"
 import { Loader } from "lucide-react"
 import { CartContext } from "@/context/CartContext"
+import Swal from "sweetalert2"
 
 export const ProductDetail = ({ id }) => {
-    const { addItem } = useContext(CartContext)
+    const { addItem, cartState } = useContext(CartContext)
     const [detail, setDetail] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -42,7 +43,7 @@ export const ProductDetail = ({ id }) => {
                     <p className="text-lg sm:text-xl">${detail.price}</p>
                     <p className="text-lg sm:text-xl">{detail.description}</p>
                 </div>
-                <Button onClick={() => addItem(detail, 1)}>Añadir al carrito</Button>
+                <Button disabled={cartState.some((item) => item.id === detail.id)} onClick={() => addItem(detail, 1)}>{cartState.some((item) => item.id === detail.id) ? "Producto agregado" : "Agregar al carrito"}</Button>
             </div>
         </div>
     )

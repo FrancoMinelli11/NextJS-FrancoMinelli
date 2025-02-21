@@ -1,15 +1,17 @@
 'use client'
 import { CartContext } from "@/context/CartContext"
+import { Plus } from "lucide-react"
+import Link from "next/link"
 import { useContext } from "react"
 
 export const CartDetails = () => {
-    const {cartState, cartTotal, removeItem} = useContext(CartContext)
+    const {cartState, cartTotal, removeItem, addItem} = useContext(CartContext)
   return (
     <div className="flex flex-col w-full min-h-[86vh] p-6 sm:p-10 dark:bg-gray-50 dark:text-gray-800">
-	<h2 className="text-xl font-semibold">Your cart</h2>
+	<h2 className="text-xl font-semibold">Tu carrito</h2>
 	<ul className="flex flex-col divide-y dark:divide-gray-300">
         {cartState.map((item) => (
-        <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
+        <li key={item.id} className="flex flex-col py-6 sm:flex-row sm:justify-between">
 			<div className="flex w-full space-x-2 sm:space-x-4">
 				<img className="flex-shrink-0 object-cover w-20 h-20 dark:border- rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={item.image} alt={item.title} />
 				<div className="flex flex-col justify-between w-full pb-4">
@@ -20,6 +22,8 @@ export const CartDetails = () => {
 						</div>
 						<div className="text-right">
 							<p className="text-lg font-semibold">${item.price}</p>
+                            <p className="text-sm dark:text-gray-600">Cantidad: {item.quantity}</p>
+                            <button type="button" className="flex items-center px-2 py-1 space-x-1 border-primary rounded border" onClick={() => addItem(item,1)}><Plus size={16} color="#132B4D" strokeWidth={1} /> Añadir más</button>
 							{/* <p className="text-sm line-through dark:text-gray-400"></p> */}
                             <button type="button" className="flex items-center px-2 py-1 pl-0 space-x-1" onClick={() => removeItem(item)}>
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-4 h-4 fill-current">
@@ -39,18 +43,13 @@ export const CartDetails = () => {
         ))}
         </ul>
         <div className="space-y-1 text-right">
-		<p>Total amount:
+		<p>Total:
 			<span className="font-semibold">${cartTotal()}</span>
 		</p>
-		<p className="text-sm dark:text-gray-600">Not including taxes and shipping costs</p>
 	</div>
 	<div className="flex justify-end space-x-4">
-		<button type="button" className="px-6 py-2 border rounded-md dark:border-violet-600">Back
-			<span className="sr-only sm:not-sr-only">to shop</span>
-		</button>
-		<button type="button" className="px-6 py-2 border rounded-md dark:bg-violet-600 dark:text-gray-50 dark:border-violet-600">
-			<span className="sr-only sm:not-sr-only">Continue to</span>Checkout
-		</button>
+		<Link href="/catalog" type="button" className="px-6 py-2 border rounded-md dark:border-primary">Continuar comprando</Link>
+        <button type="button" className="px-6 py-2 border rounded-md dark:bg-primary dark:text-gray-50 dark:border-primary">Crear pedido</button>
 	</div>
 </div>
 )}
