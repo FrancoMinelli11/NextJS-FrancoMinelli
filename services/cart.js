@@ -1,4 +1,6 @@
 import { addDoc, collection } from "firebase/firestore"
+import { db } from "../firebase/config"
+import Swal from "sweetalert2"
 
 export const LoadCart = async (order) => {
     try{
@@ -10,7 +12,7 @@ export const LoadCart = async (order) => {
             toast: true,
             icon: 'error',
             title: 'Oops...',
-            text: 'Algo salió mal',
+            text: 'No se pudo conectar con la base de datos',
         })
     }
 }

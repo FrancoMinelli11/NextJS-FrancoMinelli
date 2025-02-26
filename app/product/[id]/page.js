@@ -1,6 +1,6 @@
 import { ProductDetail } from "@/components/detail/ProductDetail"
-export default function page ({params}) {
-    const {id} = params
+export default async function page ({params}) {
+    const {id} = await params
     return (
                 <ProductDetail id={id}/>
                 

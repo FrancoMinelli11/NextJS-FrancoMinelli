@@ -1,11 +1,58 @@
 'use client'
 import { CartContext } from "@/context/CartContext"
+import { db } from "@/firebase/config"
+import { addDoc, collection } from "firebase/firestore"
 import { Plus } from "lucide-react"
 import Link from "next/link"
 import { useContext } from "react"
+import Swal from "sweetalert2"
 
 export const CartDetails = () => {
-    const {cartState, cartTotal, removeItem, addItem} = useContext(CartContext)
+    const {cartState, cartTotal, removeItem, addItem, setCartState} = useContext(CartContext)
+	const loadOrder = async () => {
+		try {const orderObj = {
+			items: cartState.map((item) => {
+				return {
+					id:item.id,
+					title:item.title,
+					price:item.price,
+					category:item.category,
+					quantity: item.quantity
+				}
+			}),
+			total: cartTotal(),
+			date: new Date()
+		}
+		console.log(orderObj)
+		if(orderObj.items.length > 0){
+			const ordersCollection = collection(db, 'orders')
+			await addDoc(ordersCollection, orderObj)
+			setCartState([])
+			Swal.fire({
+				toast:true,
+				position:'top-end',
+				title:'Orden cargada',
+				text:'Tu orden se realizó con éxito',
+				timerProgressBar: true,
+				timer:1000,
+				showConfirmButton:false,
+				icon:'success'
+			})} else {
+				Swal.fire({
+					title:'Ooops...',
+					text:'Tu carrito está vacio',
+					icon:'warning',
+					allowOutsideClick:false
+				})
+			}
+		}catch{
+			Swal.fire({
+				title:'Ooops...',
+				text:'Tu orden no se ha podido procesar con éxito',
+				icon:'error'
+			})
+		}
+	}
   return (
     <div className="flex flex-col w-full min-h-[86vh] p-6 sm:p-10 dark:bg-gray-50 dark:text-gray-800">
 	<h2 className="text-xl font-semibold">Tu carrito</h2>
@@ -49,7 +96,7 @@ export const CartDetails = () => {
 	</div>
 	<div className="flex justify-end space-x-4">
 		<Link href="/catalog" type="button" className="px-6 py-2 border rounded-md dark:border-primary">Continuar comprando</Link>
-        <button type="button" className="px-6 py-2 border rounded-md dark:bg-primary dark:text-gray-50 dark:border-primary">Crear pedido</button>
+        <button type="button" className="px-6 py-2 border rounded-md dark:bg-primary dark:text-gray-50 dark:border-primary" onClick={loadOrder}>Crear pedido</button>
 	</div>
 </div>
 )}
